@@ -9,6 +9,14 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
-
+.controller('View1Ctrl', ['newsProvider', 'constantsProvider', function(newsProv, constProv) {
+   var constants = constProv.getConstants(),
+   vm = this;
+   vm.news = [];
+   
+   newsProv.getNews().then(response => {
+     console.log(constants.newsProvider.name, constants.newsProvider.messages.getNewsSucceed, response);
+     vm.news = response.data;
+    }, 
+   response => {console.error(constants.newsProvider.name, constants.newsProvider.messages.getNewsFailed, response);});
 }]);
