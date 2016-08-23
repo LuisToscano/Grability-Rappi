@@ -1,0 +1,12 @@
+<li class="item">
+    <div class="news_title" ng-click="newsCtrl.newsPressed(news)" ng-class="{active : news.info_visible }">
+        <div class="thumbnail"><img src="{{news.image}}"/></div>
+        <div class="title"><div>{{news.title}}</div></div>
+    </div>
+</li>
+<li class="item" ng-class="{ 'nomargin': !news.info_visible}">
+    <div class="news_body animate-show" ng-show="news.info_visible">
+        <div class="full_image"><img src="{{news.image}}"/></div>
+        <div class="body"><p class="date">{{news.date}}</p><p>{{news.content}}</p></div>
+    </div>
+</li>

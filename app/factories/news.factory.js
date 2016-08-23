@@ -5,7 +5,8 @@ angular.module('myApp.view1').factory('newsProvider', ['$http', '$templateCache'
     
     var constants = constantsProv.getConstants(),
     self = {
-        getNews : getNewsArray
+        getNews : getNewsArray,
+        toggleNews : toggleN 
     };
     
     function getNewsArray(){
@@ -16,6 +17,10 @@ angular.module('myApp.view1').factory('newsProvider', ['$http', '$templateCache'
       });
         
     }
+    
+    function toggleN(news) {
+        news.info_visible = news.info_visible ? !news.info_visible : true;
+    };
     
     return self;
 }

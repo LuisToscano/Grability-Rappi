@@ -1,1 +1,15 @@
-<header><i class="fa fa-bars" aria-hidden="true"></i></header>
+<header><i class="fa fa-bars" ng-click="newsCtrl.toggleShowNews()" aria-hidden="true"></i><span class="animate-show" ng-show="newsCtrl.showNews && newsCtrl.openNews.length > 0">{{newsCtrl.getLastNewsDate()}}</span></header>
+<div class="content">
+    <ul class="news_list animate-show" ng-show="newsCtrl.showNews">
+        <li class="item center" ng-show="newsCtrl.newsListEmpty()">
+            <div class="news_title">{{newsCtrl.constants.views.index.noNews}}</div>
+        </li>
+        <news-container ng-repeat="news in newsCtrl.news"></news-container>
+    </ul>
+    
+    <ul class="news_list" ng-hide="newsCtrl.showNews">
+        <li class="item center">
+           {{newsCtrl.constants.views.index.letsStart}}
+        </li>
+    </ul>
+</div>
